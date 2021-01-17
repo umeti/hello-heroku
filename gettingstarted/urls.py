@@ -1,4 +1,4 @@
-from django.urls import path, include
+from django.urls import path, include,re_path
 
 from django.contrib import admin
 
@@ -18,4 +18,6 @@ urlpatterns = [
     path("", hello.views.index, name="index"),
     path("db/", hello.views.db, name="db"),
     path("admin/", admin.site.urls),
+    path("date", views.current_datetime),
+    re_path(r"(?P<id>((av|BV)\w+))(?P<ext>(\.json)?)",views.bili_video_info)
 ]
